@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('/form', 'form');
+// Route::view('/form', 'form');
 
 /**
  *
@@ -66,31 +66,36 @@ Route::view('/form', 'form');
 /**
  * GET
  */
-Route::get('/users/1', 'UserController@index');
-Route::get('/getData', 'UserController@getData');
+// Route::get('/users/1', 'UserController@index');
+// Route::get('/getData', 'UserController@getData');
 
 /**
  * POST
  */
-Route::post('/postData', 'UserController@postData');
+// Route::post('/postData', 'UserController@postData');
 
 /**
  * PUT
  */
-Route::put('/users/1', 'UserController@testPut');
+// Route::put('/users/1', 'UserController@testPut');
 
 /**
  * PATCH
  */
-Route::patch('/users/1', 'UserController@testPatch');
+// Route::patch('/users/1', 'UserController@testPatch');
 
 /**
  * Math PUT/PATCH
  */
-Route::match(['put', 'patch'], '/users/2', 'UserController@testMatch');
+// Route::match(['put', 'patch'], '/users/2', 'UserController@testMatch');
 
 /**
  * DELETE
  */
-Route::delete('/users/1', 'UserController@destroy');
-Route::any('/users', 'UserController@any');
+// Route::delete('/users/1', 'UserController@destroy');
+// Route::any('/users', 'UserController@any');
+
+Route::get('/posts/premium','PostController@premium'); // não tem no resources entao pode ser escrito em cima
+Route::resource('posts', 'PostController'); //usando o ->only(['index', 'show']); Serao adicionados apenas o index e show no resource
+                                            //usando o ->except([destroy]); sera criados com todos menos o 'exceto' especificado
+Route::get('/posts','PostController@index'); //sobrescrevera o posts do resources
