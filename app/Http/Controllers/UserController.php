@@ -33,4 +33,12 @@ class UserController extends Controller
         echo "Disparou ação de PUT/PATCH";
         var_dump($request);
     }
+
+    public function destroy() {
+        return "<h1>Delete para o registro 1</h1>";
+    }
+
+    public function any() {
+        return "<h1>Qualquer verbalização aceita</h1>";
+    }
 }

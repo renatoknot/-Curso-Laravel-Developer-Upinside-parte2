@@ -9,7 +9,7 @@
 <body>
     <div class="container my-5">
         <form action="{{ url('/users/1')}}" autocomplete="off" method="POST">
-            @method('PATCH')
+            @method('DELETE')
            @csrf
 
             <div class="form-group">
