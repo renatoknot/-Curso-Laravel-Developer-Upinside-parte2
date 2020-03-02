@@ -14,6 +14,23 @@ class UserController extends Controller
     }
 
     public function postData(Request $request) {
-        var_dump($request); 
+        var_dump($request);
+    }
+
+    public function testePut(Request $request) {
+        echo "<h1>Usuário da edição de código 1</h1>";
+        var_dump($request);
+        return "Disparou ação de PUT";
+    }
+
+    public function testePatch(Request $request) {
+        echo "<h1>Usuário da edição de código 1</h1>";
+        var_dump($request);
+        return "Disparou ação de PATCH";
+    }
+
+    public function testeMatch(Request $request) {
+        echo "Disparou ação de PUT/PATCH";
+        var_dump($request);
     }
 }

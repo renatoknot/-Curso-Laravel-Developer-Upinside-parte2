@@ -8,10 +8,10 @@
 </head>
 <body>
     <div class="container my-5">
-        <form action="{{ url('/postData')}}" autocomplete="off" method="POST">
-
+        <form action="{{ url('/users/1')}}" autocomplete="off" method="POST">
+            @method('PATCH')
            @csrf
-           
+
             <div class="form-group">
                 <label for="first_name">Primeiro Nome</label>
                 <input type="text" name="first_name" id="first_name" class="form-control" value="Gustavo">
