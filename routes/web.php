@@ -16,9 +16,9 @@ Route::resourceVerbs([
     'edit' => 'editar'
 ]);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 //Route::view('/form', 'form');
 
@@ -213,25 +213,60 @@ Route::get('/', function () {
 
 //Route::get('/users/{id}/comments/{comment?}', 'UserController@userComments')->where(['id' => '[0-9]+', 'comment' => '[a-zA-Z]+']);
 
-// Route::get('/users/1', 'UserController@inspect')->name('inspect');
+/**
+ *
+ * Link da documentação de referência: https://laravel.com/docs/5.7/routing#named-routes
+ *
+ * Inspecionamento
+ *
+ * Permite que você resgate qual é a rota atual, o nome definido para a rota e a ação.
+ * A ação não pode ser uma closure, pois caso seja o retorno do método será null.
+ *
+ */
 
-// Route::prefix('admin')->group(function(){
-//     Route::view('/form', 'form');
-// });
+//Route::get('/users/1', 'UserController@inspect')->name('inspect');
 
-// Route::name('admin.posts.')->group(function(){ //definindo um nome padrao para a rota
-//     Route::get('admin/posts/index', 'PostController@index')->name('index');
-//     Route::get('admin/posts', 'PostController@show')->name('show');
-// });
+/**
+ * Link da documentação de referência: https://laravel.com/docs/5.7/routing#route-groups
+ *
+ * Agrupamento de Rotas
+ *
+ * Prefix: Força que seja informado o parâmetro através da URL! É muito útil para a parte
+ *         administrativa da aplicação.
+ *
+ * Name: Adiciona um prefixo no nome de todas as rotas que pertencem ao grupo para ficar
+ *       mais fácil o acesso através da IDE.
+ *
+ * Middleware: Faz com que todas as rotas do grupo obrigatóriamente obedeçam determinado
+ *             middleware. O exemplo utilizado foi do throttle que já vem nativamente no
+ *             Laravel e limita a quantidade de requisições de acordo com o tempo.
+ *
+ * Namespace: Todos os controladores referenciados dentro do grupo, sejam pertencentes
+ *            ao namespace imposto. Recurso muito utilizado na área administrativa do
+ *            projeto.
+ *
+ * Group: União de todas essas clausulas de agrupamento do laravel e permite que a aplicação
+ *        permaneça organizada e padronizada. Com apenas duas linhas é possível definir um
+ *        resource completo de administração já forçando todos os parâmetros necessários.
+ */
 
-// Route::middleware(['throttle:10,1'])->group(function(){
-//     Route::view('/form', 'form');
-// });
+//Route::prefix('admin')->group(function(){
+//    Route::view('/form', 'form');
+//});
 
-// Route::namespace('Admin')->group(function(){
-//     Route::get('/user', 'UserController@index');
-// });
+//Route::name('admin.posts.')->group(function(){
+//    Route::get('/admin/posts/index', 'PostController@index')->name('index');
+//    Route::get('/admin/posts', 'PostController@show')->name('show');
+//});
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['throttle:10,1'],'as' => 'admin.'], function () {
-    Route::resource('/users', 'UserController');
+//Route::middleware(['throttle:10,1'])->group(function(){
+//    Route::view('/form', 'form');
+//});
+
+//Route::namespace('Admin')->group(function (){
+//    Route::get('/users', 'UserController@index');
+//});
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['throttle:10,1'], 'as' => 'admin.'], function(){
+   Route::resource('users', 'UserController');
 });
