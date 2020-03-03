@@ -213,4 +213,25 @@ Route::get('/', function () {
 
 //Route::get('/users/{id}/comments/{comment?}', 'UserController@userComments')->where(['id' => '[0-9]+', 'comment' => '[a-zA-Z]+']);
 
-Route::get('/users/1', 'UserController@inspect')->name('inspect');
+// Route::get('/users/1', 'UserController@inspect')->name('inspect');
+
+// Route::prefix('admin')->group(function(){
+//     Route::view('/form', 'form');
+// });
+
+// Route::name('admin.posts.')->group(function(){ //definindo um nome padrao para a rota
+//     Route::get('admin/posts/index', 'PostController@index')->name('index');
+//     Route::get('admin/posts', 'PostController@show')->name('show');
+// });
+
+// Route::middleware(['throttle:10,1'])->group(function(){
+//     Route::view('/form', 'form');
+// });
+
+// Route::namespace('Admin')->group(function(){
+//     Route::get('/user', 'UserController@index');
+// });
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['throttle:10,1'],'as' => 'admin.'], function () {
+    Route::resource('/users', 'UserController');
+});
