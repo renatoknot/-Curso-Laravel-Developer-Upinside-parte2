@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    public function indexRedirect()
+    {
+        // return "teste";
+        return redirect()->route('posts.index');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +22,8 @@ class PostController extends Controller
     {
         echo "<h1>Listagem dos artigos do meu site</h1>";
     }
+
+
 
     /**
      * Show the form for creating a new resource.
