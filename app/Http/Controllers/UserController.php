@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class UserController extends Controller
 {
@@ -45,5 +46,13 @@ class UserController extends Controller
     public function userComments($id, $comment = null) {
         echo "Controller: User - Método: usercomments";
         var_dump($id, $comment);
+    }
+
+    public function inspect(){
+        $route = Route::current();//rota atual
+        $name = Route::currentRouteName();
+        $action = Route::currentRouteAction();
+
+        var_dump($route, $name, $action);
     }
 }

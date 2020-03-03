@@ -212,3 +212,5 @@ Route::get('/', function () {
 //});
 
 //Route::get('/users/{id}/comments/{comment?}', 'UserController@userComments')->where(['id' => '[0-9]+', 'comment' => '[a-zA-Z]+']);
+
+Route::get('/users/1', 'UserController@inspect')->name('inspect');
