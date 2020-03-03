@@ -37,6 +37,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = [
+            'user_id' => $id,
             'user_name' => 'Gustavo Web',
             'user_email' => 'curso@upinside.com.br',
             'course' => 'Laravel Developer'

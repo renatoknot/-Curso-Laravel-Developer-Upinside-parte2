@@ -10,7 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::resourceVerbs([
+    'create' => 'cadastro', //editando os verbos para uma url amigavel
+    'edit' => 'editar'
+]);
 Route::get('/', function () {
     return view('welcome');
 });
