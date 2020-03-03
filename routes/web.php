@@ -156,17 +156,59 @@ Route::get('/', function () {
  *
  */
 
-Route::get('/users', function(){
-    echo "Listagem dos usuários da minha base!";
-});
+//Route::get('/users', function(){
+//    echo "Listagem dos usuários da minha base!";
+//});
 
-Route::view('/form', 'form');
+//Route::view('/form', 'form');
 
-Route::fallback(function(){
-    echo "<h1>Ooops! Seja muito bem vindo a nossa página 404. Nenhum registro foi encontrado.</h1>";
-});
+//Route::fallback(function(){
+//    echo "<h1>Ooops! Seja muito bem vindo a nossa página 404. Nenhum registro foi encontrado.</h1>";
+//});
 
-Route::redirect('/users/add', url('/form'), 301);
+//Route::redirect('/users/add', url('/form'), 301);
 
-Route::get('/posts', 'PostController@index')->name('posts.index');
-Route::get('/posts/index', 'PostController@indexRedirect')->name('posts.indexRedirect');
+//Route::get('/artigos', 'PostController@index')->name('posts.index');
+//Route::get('/artigos/index', 'PostController@indexRedirect')->name('posts.indexRedirect');
+
+/**
+ *
+ * Link da documentação de referência: https://laravel.com/docs/5.7/routing#route-parameters
+ *
+ * Tratamento de Parâmetros
+ *
+ * Parâmetro: Para definir um atributo da URI como parâmetro basta encapsular o conteúdo em torno
+ *            de chaves. Com isso você consegue resgatar os dados dentro de uma closure ou dentro
+ *            de um método do seu controlador usando $[nome_do_atributo].
+ *
+ * Parâmetro Opcional: Uma forma rápida de sinalizar para o Laravel de que o parâmetro pode ou não
+ *                     ser informado, é colocar um ponto de interrogação (?) no final do atributo.
+ *                     Para que seu uso seja efetivo, ao declarar o parâmetro do método, é necessário
+ *                     setar um valor padrão caso não tenha um respectivo valor. No caso, null.
+ *
+ * Validações: Podem ser feitas através de expressão regular utilizando o encadeamento de where
+ *             na definição da rota. Você pode tanto informar um único atributo ('chave', 'reg_exp')
+ *             ou um coletivo de regras com (['chave1' => 'reg_exp', 'chave2' => 'reg_exp', ...])
+ *
+ * Controlador@método: Funciona da mesma forma que o closure. Você pode invocar o Request também
+ *                     independente da ordem dos atributos.
+ *
+ */
+
+//Route::get('/users/{id}/comments/{comment}', function($id, $comment){
+//    var_dump($id, $comment);
+//});
+
+//Route::get('/users/{id}/comments/{comment?}', function($id, $comment = null){
+//    var_dump($id, $comment);
+//})->where('id', '[0-9]+');
+
+//Route::get('/users/{id}/comments/{comment?}', function($id, $comment = null){
+//    var_dump($id, $comment);
+//})->where(['id' => '[0-9]+', 'comment' => '[a-zA-Z]+']);
+
+//Route::get('/users/{id}/comments', function($id){
+//    var_dump($id);
+//});
+
+//Route::get('/users/{id}/comments/{comment?}', 'UserController@userComments')->where(['id' => '[0-9]+', 'comment' => '[a-zA-Z]+']);

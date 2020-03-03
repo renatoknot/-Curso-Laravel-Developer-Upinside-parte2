@@ -41,4 +41,9 @@ class UserController extends Controller
     public function any() {
         return "<h1>Qualquer verbalização aceita</h1>";
     }
+
+    public function userComments($id, $comment = null) {
+        echo "Controller: User - Método: usercomments";
+        var_dump($id, $comment);
+    }
 }
